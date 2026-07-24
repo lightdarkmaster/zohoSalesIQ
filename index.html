@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SalesIQ &mdash; Talk to Every Visitor Like You Know Them</title>
+<meta name="description" content="SalesIQ turns anonymous website traffic into qualified conversations. Live chat, visitor intelligence, and an AI chatbot that never sleeps &mdash; built on the Zoho ecosystem.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="SalesIQ — Talk to Every Visitor Like You Know Them">
+<meta property="og:description" content="Live chat, visitor intelligence, and an AI chatbot that qualifies leads while your team sleeps.">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SalesIQ — Talk to Every Visitor Like You Know Them">
+<meta name="twitter:description" content="Live chat, visitor intelligence, and an AI chatbot that qualifies leads while your team sleeps.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<!-- Noise overlay -->
+<div class="noise-layer" aria-hidden="true"></div>
+
+<!-- Cursor glow (desktop only, injected/controlled by JS) -->
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__fill" id="scrollFill"></div></div>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader" role="status" aria-label="Loading">
+  <div class="preloader__mark">
+    <span class="preloader__ring"></span>
+    <span class="preloader__pct" id="preloaderPct">0</span>
+  </div>
+  <p class="preloader__label">Warming up the signal</p>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="siteNav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand" aria-label="SalesIQ home">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      SalesIQ
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">Product</a>
+      <a href="#features">Features</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#process">How it works</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a href="#final-cta" class="btn btn--ghost">Watch demo</a>
+      <a href="#final-cta" class="btn btn--primary magnetic">
+        <span>Start free trial</span>
+      </a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="#about">Product</a>
+    <a href="#features">Features</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#process">How it works</a>
+    <a href="#integrations">Integrations</a>
+    <a href="#faq">FAQ</a>
+    <a href="#final-cta" class="btn btn--primary">Start free trial</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__vignette" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="eyebrow reveal-up">
+        <span class="eyebrow__dot"></span> Live on every page of your site
+      </p>
+
+      <h1 class="hero__title">
+        <span class="reveal-line"><span>Talk to every visitor</span></span>
+        <span class="reveal-line"><span>like you already <em>know</em> them.</span></span>
+      </h1>
+
+      <p class="hero__subtitle reveal-up">
+        SalesIQ watches your site in real time, starts the right conversation at the right moment,
+        and hands your sales team a warm lead instead of a cold form. Live chat, visitor intelligence,
+        and an AI chatbot &mdash; working together while you sleep.
+      </p>
+
+      <div class="hero__actions reveal-up">
+        <a href="#final-cta" class="btn btn--primary btn--lg magnetic">
+          <span>Start free trial</span>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="btn btn--glass btn--lg magnetic" id="watchDemoBtn">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
+          <span>Watch demo</span>
+        </button>
+      </div>
+
+      <div class="hero__stats reveal-up">
+        <div class="stat-chip">
+          <span class="stat-chip__value" data-count="98">0</span><span class="stat-chip__suffix">%</span>
+          <span class="stat-chip__label">faster first response</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip__value" data-count="24">0</span><span class="stat-chip__suffix">/7</span>
+          <span class="stat-chip__label">AI-qualified coverage</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip__value" data-count="40">0</span><span class="stat-chip__suffix">+</span>
+          <span class="stat-chip__label">native integrations</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero__scroll-cue" id="scrollCue" aria-label="Scroll to learn more">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </button>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> What is SalesIQ</p>
+      <h2 class="section-title reveal-up">
+        Your website has traffic.<br>SalesIQ gives it a pulse.
+      </h2>
+      <p class="section-lead reveal-up">
+        Every visit is a signal &mdash; the pages someone lingers on, the pricing tab they reopen,
+        the third visit this week. SalesIQ reads those signals live, then routes the moment to a human,
+        a bot, or a report, whichever gets your visitor an answer fastest.
+      </p>
+
+      <div class="about-grid">
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
+          <h3>Live chat</h3>
+          <p>Real conversations with real visitors, routed to the right operator before they think to leave.</p>
+        </article>
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i></div>
+          <h3>Visitor tracking</h3>
+          <p>See who's on your site right now &mdash; their path, their source, their intent &mdash; as it happens.</p>
+        </article>
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+          <h3>AI-powered chatbots</h3>
+          <p>Zobot greets, qualifies, and answers the repeat questions so your team handles the ones that matter.</p>
+        </article>
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-ranking-star" aria-hidden="true"></i></div>
+          <h3>Lead scoring</h3>
+          <p>Every visitor is scored on behavior and fit, so sales opens with the hottest conversation first.</p>
+        </article>
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+          <h3>Visitor insights</h3>
+          <p>Geography, device, referral source, and revisit history &mdash; built into every chat window.</p>
+        </article>
+        <article class="info-card reveal-up">
+          <div class="info-card__icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+          <h3>Real-time analytics</h3>
+          <p>Response times, conversions, and operator load, updating on a dashboard your team actually opens.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Everything included</p>
+      <h2 class="section-title reveal-up">One platform, every channel your visitors already use.</h2>
+      <p class="section-lead reveal-up">
+        From the first ping to the closed deal, SalesIQ covers the full conversation &mdash; text, voice,
+        and screen &mdash; without a second tool in sight.
+      </p>
+
+      <div class="feature-grid" id="featureGrid"><!-- populated by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD PREVIEW ============ -->
+  <section class="dashboard" id="dashboard">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Command center</p>
+      <h2 class="section-title reveal-up">Everything your operators need, on one screen.</h2>
+      <p class="section-lead reveal-up">
+        A live view of who's on your site, who's waiting, and who just converted &mdash; built for the
+        person managing the queue, not the person who designed it.
+      </p>
+
+      <div class="dash-panel reveal-up">
+        <div class="dash-panel__glow" aria-hidden="true"></div>
+        <div class="dash-panel__top">
+          <div class="dash-panel__dots"><span></span><span></span><span></span></div>
+          <div class="dash-panel__tabs">
+            <span class="active">Overview</span><span>Conversations</span><span>Visitors</span><span>Reports</span>
+          </div>
+          <div class="dash-panel__live"><span class="pulse-dot"></span> Live</div>
+        </div>
+
+        <div class="dash-panel__grid">
+          <div class="dash-card dash-card--counter">
+            <span class="dash-card__label">Visitors online</span>
+            <span class="dash-card__value" data-count="312">0</span>
+            <span class="dash-card__delta up"><i class="fa-solid fa-arrow-up"></i> 12% vs. yesterday</span>
+          </div>
+          <div class="dash-card dash-card--counter">
+            <span class="dash-card__label">Active chats</span>
+            <span class="dash-card__value" data-count="47">0</span>
+            <span class="dash-card__delta up"><i class="fa-solid fa-arrow-up"></i> 6% vs. yesterday</span>
+          </div>
+          <div class="dash-card dash-card--counter">
+            <span class="dash-card__label">Avg. response</span>
+            <span class="dash-card__value" data-count="18" data-suffix="s">0</span>
+            <span class="dash-card__delta down"><i class="fa-solid fa-arrow-down"></i> 4s faster</span>
+          </div>
+
+          <div class="dash-card dash-card--graph">
+            <span class="dash-card__label">Conversation volume &mdash; 7 days</span>
+            <svg viewBox="0 0 320 120" class="graph-svg" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="graphFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ff6b00" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="graph-area" d="M0,90 L45,70 L90,78 L135,45 L180,55 L225,30 L270,38 L320,15 L320,120 L0,120 Z" fill="url(#graphFill)"/>
+              <path class="graph-line" d="M0,90 L45,70 L90,78 L135,45 L180,55 L225,30 L270,38 L320,15" fill="none" stroke-width="2.5"/>
+            </svg>
+          </div>
+
+          <div class="dash-card dash-card--ring">
+            <span class="dash-card__label">Resolution rate</span>
+            <svg viewBox="0 0 120 120" class="ring-svg" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" class="ring-track"/>
+              <circle cx="60" cy="60" r="50" class="ring-fill" data-ring="92"/>
+            </svg>
+            <span class="ring-value">92%</span>
+          </div>
+
+          <div class="dash-card dash-card--feed">
+            <span class="dash-card__label">Live activity</span>
+            <ul class="feed-list" id="feedList"><!-- populated by script.js --></ul>
+          </div>
+
+          <div class="dash-card dash-card--heatmap">
+            <span class="dash-card__label">Engagement heatmap</span>
+            <div class="heatmap-grid" id="heatmapGrid" aria-hidden="true"><!-- populated by script.js --></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> The path of one visit</p>
+      <h2 class="section-title reveal-up">From anonymous tab to closed deal, in seven steps.</h2>
+
+      <ol class="timeline">
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">01</span>
+          <div class="timeline__body">
+            <h3>Visitor arrives</h3>
+            <p>Someone lands on your site from an ad, a search, or a link in an email.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">02</span>
+          <div class="timeline__body">
+            <h3>Tracked instantly</h3>
+            <p>SalesIQ identifies source, device, and browsing path within the first page load.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">03</span>
+          <div class="timeline__body">
+            <h3>Chat initiated</h3>
+            <p>A trigger fires at the right behavioral moment &mdash; not a random delay.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">04</span>
+          <div class="timeline__body">
+            <h3>AI qualification</h3>
+            <p>Zobot asks the questions your SDRs ask, and does it before a human is even online.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">05</span>
+          <div class="timeline__body">
+            <h3>Lead scoring</h3>
+            <p>Behavior and answers combine into a single score sales can trust and prioritize.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">06</span>
+          <div class="timeline__body">
+            <h3>Sales notified</h3>
+            <p>The right rep is pinged in Zoho CRM, Slack, or Teams, with full context attached.</p>
+          </div>
+        </li>
+        <li class="timeline__step reveal-up">
+          <span class="timeline__index">07</span>
+          <div class="timeline__body">
+            <h3>Conversion</h3>
+            <p>The rep closes with a warm lead, not a name and a guess.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ BENEFITS ============ -->
+  <section class="benefits" id="benefits">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Why teams switch</p>
+      <h2 class="section-title reveal-up">Less guessing. More closing.</h2>
+
+      <div class="benefit-grid">
+        <article class="benefit-card reveal-up">
+          <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+          <h3>Increase conversions</h3>
+          <p>Meet visitors mid-decision instead of losing them to a contact form.</p>
+        </article>
+        <article class="benefit-card reveal-up">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          <h3>Reduce response time</h3>
+          <p>Go from a multi-hour email thread to a live answer in seconds.</p>
+        </article>
+        <article class="benefit-card reveal-up">
+          <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+          <h3>Boost engagement</h3>
+          <p>Proactive triggers turn passive browsing into an actual conversation.</p>
+        </article>
+        <article class="benefit-card reveal-up">
+          <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+          <h3>Better customer insights</h3>
+          <p>Every chat adds to a visitor profile your whole team can see.</p>
+        </article>
+        <article class="benefit-card reveal-up">
+          <i class="fa-solid fa-sack-dollar" aria-hidden="true"></i>
+          <h3>Increase revenue</h3>
+          <p>Faster answers and warmer leads compound into a shorter sales cycle.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTEGRATIONS ============ -->
+  <section class="integrations" id="integrations">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Plays well with others</p>
+      <h2 class="section-title reveal-up">Already fits inside the stack you run today.</h2>
+      <p class="section-lead reveal-up">
+        Native two-way sync with the rest of Zoho, plus the tools your sales and support teams
+        already live in.
+      </p>
+
+      <div class="integration-grid" id="integrationGrid"><!-- populated by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-inner section-inner--wide">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Teams already on SalesIQ</p>
+      <h2 class="section-title reveal-up">Trusted by teams who answer fast.</h2>
+    </div>
+
+    <div class="testimonial-slider" id="testimonialSlider" tabindex="0" aria-label="Customer testimonials, auto-scrolling">
+      <div class="testimonial-track" id="testimonialTrack"><!-- populated by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="section-inner section-inner--narrow">
+      <p class="eyebrow reveal-up"><span class="eyebrow__dot"></span> Questions, answered</p>
+      <h2 class="section-title reveal-up">Frequently asked questions.</h2>
+
+      <div class="accordion" id="accordion"><!-- populated by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta" id="final-cta">
+    <div class="final-cta__glow" aria-hidden="true"></div>
+    <div class="section-inner section-inner--narrow">
+      <h2 class="final-cta__title reveal-up">Your next visitor is on your site right now.</h2>
+      <p class="final-cta__lead reveal-up">Give them someone to talk to. Free for 15 days, no card required.</p>
+      <div class="final-cta__actions reveal-up">
+        <a href="#" class="btn btn--primary btn--lg magnetic"><span>Start free trial</span><i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="btn btn--glass btn--lg magnetic"><span>Talk to sales</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__divider" aria-hidden="true"></div>
+  <div class="section-inner footer__inner">
+    <div class="footer__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <p>SalesIQ<br><span>by the Zoho ecosystem</span></p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#integrations">Integrations</a>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#testimonials">Customers</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <a href="#process">How it works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#final-cta">Get started</a>
+      </div>
+    </div>
+
+    <div class="footer__social">
+      <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+  <p class="footer__legal">&copy; 2026 SalesIQ. All rights reserved.</p>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Demo modal -->
+<div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-label="Product demo" hidden>
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="modalClose" aria-label="Close demo">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="modal__body">
+      <i class="fa-solid fa-play modal__play" aria-hidden="true"></i>
+      <h3>A two-minute look at SalesIQ</h3>
+      <p>This is a preview build &mdash; hook up your product video here.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Three.js (module build) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.min.js"
+  }
+}
+</script>
+<script src="./scripts/scripts.js" type="module"></script>
+</body>
+</html>
