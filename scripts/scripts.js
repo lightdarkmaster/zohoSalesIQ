@@ -304,12 +304,12 @@ const INTEGRATIONS = [
 ];
 
 const TESTIMONIALS = [
-  ['Reyes M.', 'Head of Support, DMCI Homes', 'SalesIQ cut our average first-response time from minutes to seconds. Our operators finally see the visitor before the visitor has to explain anything.'],
-  ['Priya K.', 'RevOps Lead', 'The lead scoring alone paid for the tool. Sales stopped chasing cold forms and started opening warm chats.'],
-  ['Daniel O.', 'Founder, SaaS startup', 'Zobot handles our FAQ traffic entirely. My team only sees the conversations that actually need a human.'],
-  ['Aiko T.', 'CX Manager', 'Screen sharing inside chat solved a support workflow we used to need three tools for.'],
-  ['Marcus F.', 'Sales Director', 'Visitor intelligence changed how we prioritize outreach. We know who to call before we pick up the phone.'],
-  ['Lena S.', 'Growth Lead', 'The CRM sync is instant. No exports, no duplicate records, no manual work.'],
+  ['Christian B.', 'Head of Support, DMCI Homes', 'SalesIQ cut our average first-response time from minutes to seconds. Our operators finally see the visitor before the visitor has to explain anything.'],
+  ['Chan K.', 'RevOps Lead', 'The lead scoring alone paid for the tool. Sales stopped chasing cold forms and started opening warm chats.'],
+  ['Aston O.', 'Founder, SaaS startup', 'Zobot handles our FAQ traffic entirely. My team only sees the conversations that actually need a human.'],
+  ['Zaldy T.', 'CX Manager', 'Screen sharing inside chat solved a support workflow we used to need three tools for.'],
+  ['Noreen F.', 'Sales Director', 'Visitor intelligence changed how we prioritize outreach. We know who to call before we pick up the phone.'],
+  ['Ingrid S.', 'Growth Lead', 'The CRM sync is instant. No exports, no duplicate records, no manual work.'],
 ];
 
 const FAQS = [
