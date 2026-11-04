@@ -1,0 +1,78 @@
+salesIQBaseUrl = "https://salesiq.zoho.com/api/v2/demo109devtac/";
+departmentId = "958161000000002020";
+deptResp = invokeurl
+[
+	url :salesIQBaseUrl + "departments/958161000000002020"
+	type :GET
+	connection:"sales_conn"
+];
+operatorIds = deptResp.get("data").get("operators");
+operatorLoad = Map();
+for each  operator in operatorIds
+{
+	opDetailsRes = invokeurl
+	[
+		url :salesIQBaseUrl + "operators/" + operator
+		type :GET
+		connection:"sales_conn"
+	];
+	opData = opDetailsRes.get("data");
+	opStatus = opData.get("availability").get("status_code");
+	if(opStatus == 1)
+	{
+		opResp = invokeurl
+		[
+			url :salesIQBaseUrl + "conversations?status=open&attender_id=" + operator + "&department_id=" + departmentId
+			type :GET
+			connection:"sales_conn"
+		];
+		chats = opResp.get("data");
+		chatCount = 0;
+		if(chats != null)
+		{
+			chatCount = chats.size();
+		}
+		operatorLoad.put(operator,chatCount);
+	}
+}
+counts = operatorLoad.values();
+counts.sort(true);
+leastChats = counts.get(0);
+leastOperatorId = null;
+for each  opId in operatorLoad.keys()
+{
+	if(leastOperatorId == null && operatorLoad.get(opId) == leastChats)
+	{
+		leastOperatorId = opId;
+	}
+}
+conversationId = session.get("activeId").get("value");
+// payloadMap = Map();
+// payloadMap.put("department_id",departmentId);
+// payloadMap.put("operator_id",leastOperatorId);
+// payloadMap.put("notes","This chat has been transferred to the least loaded operator. Kindly respond to the visitor, thank you!");
+// transferChatRes = invokeurl
+// [
+// 	url :salesIQBaseUrl + "conversations/" + conversationId + "/transfer"
+// 	type :PUT
+// 	parameters:payloadMap
+// 	connection:"sales_conn"
+// ];
+leastLoadedOperatorRes = invokeurl
+[
+	url :salesIQBaseUrl + "operators/" + leastOperatorId
+	type :GET
+	connection:"sales_conn"
+];
+operatorData = leastLoadedOperatorRes.get("data");
+opName = ifNull(operatorData.get("first_name") + " ","") + ifNull(operatorData.get("last_name"),"");
+opEmail = operatorData.get("email_id");
+conversationLink = "https://salesiq.zoho.com/demo109devtac/allchats/" + conversationId;
+cliqMessage = "Hi {@" + opEmail + "} A website visitor has requested to speak with a live agent, and the chat session has been routed to you. Please go to this link: [Sales IQ](" + conversationLink + ") to open the SalesIQ chat and initiate communication to assist them as soon as possible.";
+// cliqMessage = "Hi {@demogabs1223@gmail.com}! A website visitor has requested to speak with a live agent, and the chat session has been routed to you. Please go to this link: [Sales IQ](" + conversationLink + ") to open the SalesIQ chat and initiate communication to assist them as soon as possible.";
+res = zoho.cliq.postToChannelAsBot("salesiqinternalchannel","salesiqinternal",cliqMessage,"cliq_conn");
+returnMap = Map();
+returnMap.put("operatorId",leastOperatorId);
+returnMap.put("operatorName",opName);
+returnMap.put("operatorEmail",opEmail);
+return returnMap;
