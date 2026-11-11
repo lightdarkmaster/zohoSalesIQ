@@ -772,8 +772,43 @@ $zoho.salesiq.ready = function () {
 
 // Implement this using Zoho Cliq's webhook or API
 function sendCliqNotification(triggername, visitorinfo) {
-  // Your AJAX/fetch call to Cliq webhook URL goes here
-}
+  const CLIQ_CHANNEL_UNIQUE_NAME = "salesiqchatnotification";
+  const CLIQ_BOT_UNIQUE_NAME = "salesiqbot";
+  const CLIQ_ACCESS_TOKEN = "YOUR_OAUTH_ACCESS_TOKEN"; // visible in page source, see note below
+  const SALESIQ_CHATS_URL = "https://salesiq.zoho.com/demo105devtac/liveview";
+  
+  function sendCliqNotification(triggername, visitorinfo) {
+    const info = visitorinfo || {};
+    const visitorName = info.name || "A website visitor";
+    const location = [info.city, info.state, info.ccode].filter(Boolean).join(", ");
+  
+    const cliqMessage =
+      visitorName + " has requested to speak with a live agent. " +
+      (info.email ? "Email: " + info.email + ". " : "") +
+      (info.phone ? "Phone: " + info.phone + ". " : "") +
+      (location ? "Location: " + location + ". " : "") +
+      "Please go to [Sales IQ](" + SALESIQ_CHATS_URL + ") to open the chat and " +
+      "assist them as soon as possible.";
+  
+    const url = "https://cliq.zoho.com/api/v2/channelsbyname/" +
+                encodeURIComponent(CLIQ_CHANNEL_UNIQUE_NAME) +
+                "/message?bot_unique_name=" + encodeURIComponent(CLIQ_BOT_UNIQUE_NAME);
+  
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + CLIQ_ACCESS_TOKEN,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ text: cliqMessage })
+    };
+  
+    fetch(url, options)
+      .then(response => response.json().catch(() => ({})))
+      .then(response => console.log("Cliq response:", response))
+      .catch(err => console.error("Cliq notification failed:", err));
+  }
+  }
 </script>
 <script src="./scripts/scripts.js" type="module"></script>
 <!-- <script src="./scripts/salesIQ.js"></script> -->
