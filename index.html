@@ -767,9 +767,6 @@ $zoho.salesiq.ready = function () {
       sendCliqNotification(triggername, visitorinfo);
     }
 
-  });
-};
-
 // Implement this using Zoho Cliq's webhook or API
 function sendCliqNotification(triggername, visitorinfo) {
   const CLIQ_CHANNEL_UNIQUE_NAME = "salesiqchatnotification";
@@ -802,13 +799,13 @@ function sendCliqNotification(triggername, visitorinfo) {
       },
       body: JSON.stringify({ text: cliqMessage })
     };
-  
+   
     fetch(url, options)
-      .then(response => response.json().catch(() => ({})))
+      .then(response => response.json())
       .then(response => console.log("Cliq response:", response))
       .catch(err => console.error("Cliq notification failed:", err));
-  }
-  }
+  });
+};
 </script>
 <script src="./scripts/scripts.js" type="module"></script>
 <!-- <script src="./scripts/salesIQ.js"></script> -->
