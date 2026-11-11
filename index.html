@@ -760,10 +760,17 @@
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq7fa62a005690bdbf684da7f7ecc8a4bf34dd38e2c2bdd8cca6d71c4c7cd73afe" defer></script>
 <script>
 $zoho.salesiq.ready = function () {
-  $zoho.salesiq.visitor.trigger(function (triggername, visitorinfo) {
+  $zoho.salesiq.visitor.trigger(async function (triggername, visitorinfo) {
     if (triggername === 'NotifyCliq') {
       //sendCliqNotification(triggername, visitorinfo);
       console.log("Visitor Info: ", visitorinfo);
+      let visitorId = "";
+      try {
+        visitorId = await Promise.resolve($zoho.salesiq.visitor.uniqueuserid());
+        console.log("uniqueuserid returned:", visitorId);
+      } catch (err) {
+        console.error("Could not get visitor ID:", err);
+      }
     }
   });
 };
